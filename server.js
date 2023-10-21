@@ -23,7 +23,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 
 app.use(cors({
-  origin: 'https://65338e36062e1b7fa311a17e--merry-florentine-017b60.netlify.app'
+  origin: 'https://6533b9a7f393d26455877089--merry-florentine-017b60.netlify.app'
 }));
 
 app.use('/api/products', productRoutes);
@@ -31,9 +31,7 @@ app.use('/api/users', userRoutes);
 app.use('/api/orders', orderRoutes);
 app.use('/api/upload', uploadRoutes);
 
-app.get('/api/config/paypal', (req, res) =>
-  res.send({ clientId: process.env.PAYPAL_CLIENT_ID })
-);
+
 
 if (process.env.NODE_ENV === 'production') {
   const __dirname = path.resolve();
