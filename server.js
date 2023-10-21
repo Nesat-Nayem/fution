@@ -1,6 +1,7 @@
 import path from 'path';
 import express from 'express';
 import dotenv from 'dotenv';
+import cors from 'cors';
 import cookieParser from 'cookie-parser';
 dotenv.config();
 import connectDB from './config/db.js';
@@ -15,10 +16,15 @@ const port = process.env.PORT || 5000;
 connectDB();
 
 const app = express();
+app.use(cors());
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
+
+app.use(cors({
+  origin: 'https://65338e36062e1b7fa311a17e--merry-florentine-017b60.netlify.app'
+}));
 
 app.use('/api/products', productRoutes);
 app.use('/api/users', userRoutes);
